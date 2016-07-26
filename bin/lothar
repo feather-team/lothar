@@ -1,0 +1,32 @@
+#!/usr/bin/env node
+
+var Liftoff = require('liftoff');
+var argv = require('minimist')(process.argv.slice(2));
+var path = require('path');
+var cli = new Liftoff({
+    name: 'lothar',
+    processTitle: 'lothar',
+    moduleName: 'lothar',
+    configName: 'conf/conf',
+    extensions: {
+        '.js': null
+    }
+});
+
+if(!argv.r && !argv.root){
+    argv.r = process.cwd();
+}
+
+cli.launch({
+    cwd: (argv.r || argv.root),
+    configPath: argv.f || argv.file
+}, function(env){
+    var lothar;
+
+    env.modulePath = path.join(__dirname, '../index.js');
+    lothar = require(env.modulePath);
+    lothar.set('system.localNPMFolder', path.join(env.cwd));
+    lothar.set('system.globalNPMFolder', path.dirname(__dirname));
+    lothar.cli.name = this.name;
+    lothar.cli.run(argv, env);
+});
