@@ -10,4 +10,4 @@ lothar release -r demo/common
 lothar server start -p 9999 #预览
 ```
 
-feather1.x项目转换lothar，可使用[feather2lothar](https://github.com/feather-team/feather2lothar)
+feather1.x项目转换lothar，可使用[feather2lothar](https://github.com/jsyczhanghao/feather2lothar)
