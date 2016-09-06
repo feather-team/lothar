@@ -11,7 +11,8 @@
     "lothar-preprocessor-label-analyse": "^1.0.0",
     "minimist": "^1.2.0",
     "lothar-command-init": "^1.0.0",
-    "liftoff": "^2.2.5"
+    "liftoff": "^2.2.5",
+    "feather2-lang": "~1.0.0"
   },
   "devDependencies": {},
   "scripts": {
