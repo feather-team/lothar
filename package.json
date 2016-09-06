@@ -1,18 +1,35 @@
 {
   "name": "lothar",
   "version": "1.0.0",
-  "description": "lothar",
+  "description": "blade的feather2解决方案",
   "main": "index.js",
-  "bin": {
-    "lothar": "bin/lothar"
+  "dependencies": {
+    "lothar-postpackager-position": "^1.0.0",
+    "feather2-server-php": "^1.0.0",
+    "lothar-postpackager-runtime": "^1.0.0",
+    "lothar-postprocessor-analyse": "^1.0.0",
+    "lothar-preprocessor-label-analyse": "^1.0.0",
+    "minimist": "^1.2.0",
+    "lothar-command-init": "^1.1.1",
+    "liftoff": "^2.2.5"
   },
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/feather-team/lothar.git"
+  },
+  "keywords": [
+    "blade",
+    "feather2",
+    "lothar"
+  ],
   "author": "jsyczhanghao@sina.com",
   "license": "ISC",
-  "dependencies": {
-    "liftoff": "^2.2.0",
-    "minimist": "^1.2.0"
-  }
+  "bugs": {
+    "url": "https://github.com/feather-team/lothar/issues"
+  },
+  "homepage": "https://github.com/feather-team/lothar#readme"
 }

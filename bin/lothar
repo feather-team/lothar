@@ -13,7 +13,7 @@ var cli = new Liftoff({
     }
 });
 
-if(!argv.r && !argv.root){
+if(argv._[0] != 'server' && !argv.r && !argv.root){
     argv.r = process.cwd();
 }
 
