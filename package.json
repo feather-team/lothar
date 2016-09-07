@@ -1,8 +1,11 @@
 {
   "name": "lothar",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "blade的feather2解决方案",
   "main": "index.js",
+  "bin": {
+    "lothar": "bin/lothar"
+  },
   "dependencies": {
     "lothar-postpackager-position": "^1.0.0",
     "feather2-server-php": "^1.0.0",
