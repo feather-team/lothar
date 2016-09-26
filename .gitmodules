@@ -7,9 +7,9 @@
 [submodule "node_modules/lothar-command-init"]
 	path = node_modules/lothar-command-init
 	url = https://github.com/feather-team/lothar-command-init.git
-[submodule "node_modules/lothar-postpackager-position"]
-	path = node_modules/lothar-postpackager-position
-	url = https://github.com/feather-team/lothar-postpackager-position.git
 [submodule "node_modules/lothar-preprocessor-label-analyse"]
 	path = node_modules/lothar-preprocessor-label-analyse
 	url = https://github.com/feather-team/lothar-preprocessor-label-analyse.git
+[submodule "node_modules/lothar-postpackager-position"]
+	path = node_modules/lothar-postpackager-position
+	url = https://github.com/feather-team/lothar-postpackager-position.git
