@@ -1,5 +1,8 @@
 # lothar
 
+![](https://img.shields.io/npm/v/lothar.svg) ![](https://img.shields.io/npm/dm/lothar.svg)
+
+
 lothar是基于[blade](http://www.golaravel.com/laravel/docs/5.1/blade/)模板引擎开发的[feather2](https://github.com/feather-team/feather2)的定制版工程框架
 
 ## 使用
