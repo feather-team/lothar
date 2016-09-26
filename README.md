@@ -116,3 +116,33 @@ common模块下的 index.html
 ```
 
 以上为lothar中使用的注意要点，具体部署可见[feather2/blade](https://github.com/jsyczhanghao/feather2-blade.git)
+
+
+#### 注：
+
+lothar虽然不鼓励使用动态域名，但是支持，但，注意，但请使用以下2种语法：
+
+conf/conf.js
+```
+lothar.config.set('project.domain', '//<?=$xxx?>') //请注意，开头必须带上请求协议，不要有分号，也不要使用 <?php echo 这种语法，注意： 重要的事情只说一次
+lothar.config.set('project.domain', '//{{$domain}}'); //blade输出值的语法也是支持的
+```
+
+#### 但是， 使用动态域名后， img也会添加上动态域名，而部分img是存在于css中，css文件不经过php的解析执行，所以，最终出来的页面一定是有问题的，所以，可以通过deploy配置的replace来解决此问题:
+
+common模块 conf/deploy/xx.js
+```
+module.exports = [
+    //...此处N多配置
+    {
+        from: "/static",
+        to: "xxx",
+        include: ".css",
+        replace: {
+            //去掉所有css中的出现的domain
+            from: "//{{$domain}}",
+            to: ""
+        }
+    }
+];
+```
