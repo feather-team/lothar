@@ -8,6 +8,12 @@ lothar是基于[blade](http://www.golaravel.com/laravel/docs/5.1/blade/)模板�
 
 #### 如果是1.x项目，可直接通过[feather2lothar](https://github.com/jsyczhanghao/feather2lothar)工具进行转换
 
+### 安装
+
+```sh
+npm install -g lothar
+```
+
 lothar和feather2的使用上基本上没有太大不同，feather2是基于单模块项目，而lothar是基于多模块，我们可以使用init命令初始化一个项目
 
 
@@ -51,6 +57,7 @@ lothar server start
 
 打开浏览器，刷新页面，查看效果
 
+### 注意点
 
 因为lothar的使用和feather2基本一致，下面会列出需要注意的几点：
 
