@@ -47,6 +47,13 @@ lothar init demo #创建项目demo
 2.  有利于模块间的解耦，后期可独立上线，模块间仅通过map.json进行静态资源的关联。
 3.  利于权限控制
 
+
+也可通过命令行--module 参数进行模块的创建:
+ 
+ ```sh
+ lothar init demo/news --module #创建demo项目的新闻模块
+ ```
+
 ### start
 
 对common和main模块进行编译
