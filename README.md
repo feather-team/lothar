@@ -85,7 +85,7 @@ module.exports = {
 
 编译后访问/ajax/test，地址会自动转发至common/data/async/test.json
 
-在feather2中，因为使用了mustache通用模板引擎，所以采用了.json文件存储页面数据，lothar中则除了 同路径外的.json文件后，也支持.php文件结尾的页面数据文件，比如，模块下有一文件叫 page/a/b.html，则对应的页面数据文件则为 data/page/a/b.php 或 data/page/a/b.json
+* 在feather2中，因为使用了mustache通用模板引擎，所以采用了.json文件存储页面数据，lothar中则除了 同路径外的.json文件后，也支持.php文件结尾的页面数据文件，比如，模块下有一文件叫 page/a/b.html，则对应的页面数据文件则为 data/page/a/b.php 或 data/page/a/b.json
 
 ```php
 <?php
@@ -100,7 +100,7 @@ return array(
 }
 ```
 
-注：标准的json文件，key必须包含双引号，而非单引号，并且，不能有注释， 另，lothar同样也支持 \_global\_.php文件进行全局数据加载，只是只会加载common模块下的该文件
+#### 注：标准的json文件，key必须包含双引号，而非单引号，并且，不能有注释， 另，lothar同样也支持 \_global\_.php文件进行全局数据加载，只是只会加载common模块下的该文件
 
 * lothar中引用的几个扩展标签的写法需要转成blade的语法，如：
 
