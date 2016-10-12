@@ -30,9 +30,7 @@ lothar init demo #创建项目demo
 
 项目模块是指功能及开发相对独立的业务模块，拿一个电商网站举例：
 
-一个完整的电商网站拥有很多频道，如：首页、商品、活动、用户、海外等频道，假设，这些频道都是pc端的业务，有没有发现，实际上他们之间的联系非常少，除了：
-1.  公用头尾、侧边栏、导航等 
-1.  通用的技术架构： js公用类库、ui库等
+一个完整的电商网站拥有很多频道，如：首页、商品、活动、用户、海外等频道，假设，这些频道都是pc端的业务，有没有发现，实际上他们之间的联系非常少，除了：公用头尾、侧边栏、导航等，另外一些通用的技术架构、js公用类库、ui库等
 
 其他地方基本上不存在任何联系，业务与业务之间的连接也仅仅通过链接方式进行跳转。他们之间的公用部分的改动频率也是非常低的，那么:
 
@@ -48,7 +46,7 @@ lothar init demo #创建项目demo
 3.  利于权限控制
 
 
-也可通过命令行--module 参数进行模块的创建:
+####也可通过命令行--module 参数进行模块的创建:
  
  ```sh
  lothar init demo/news --module #创建demo项目的新闻模块
@@ -121,7 +119,7 @@ lothar对blade进行了扩展，支持插件，具体用法：
 common/plugins/datetime.php
 
 ```php
-function blade_plugin_datetime(){
+function blade_plugin_datetime($expression){
     return '<?php echo date("Y-m-d H:i:s");?>';
 }
 ```
@@ -154,7 +152,7 @@ module.exports = [
     {
         from: "/static",
         to: "xxx",
-        include: ".css",
+        include: "**.css",
         replace: {
             //去掉所有css中的出现的domain
             from: "//{{$domain}}",
@@ -162,4 +160,20 @@ module.exports = [
         }
     }
 ];
+```
+#### 如果使用了动态域名，则不建议在js文件中使用__uri进行url定位，1. 是因为存在css中图片一样的问题， 2. js中的出现的url一般是相对于页面的url，所以，即使替换掉，也很有可能无法找到正确的资源地址。 建议出现这种情况，可以在html页面中的script标签预先定义好js，如:
+
+```html
+<script>
+var URL_CONFIG = {
+    SWF: __uri('/static/ads.swf'),
+    BG_IMG: __uri('/static/bg.png')
+};
+</script>
+```
+
+```js
+var img = document.createElement('img');
+img.src = URL_CONFIG.BG_IMG;
+document.body.appendChild(img);
 ```
