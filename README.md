@@ -96,8 +96,24 @@ return array(
 
 ```js
 {
-    "name": "123"
+    "title": "123"
 }
+```
+
+页面引用
+```
+<div>{{$title}}</div>
+```
+lothar为了方便开发者本地调试，增了一个额外的变量 __debugData， 可打印出当前页面的所有数据
+
+```
+<?php var_dump($__debugData);?>
+```
+
+当然你也可以通过使用blade自带的方法打印，只是结果可能不是你想要的
+
+```
+<?php var_dump($__env->getShared());?>
 ```
 
 #### 注：标准的json文件，key必须包含双引号，而非单引号，并且，不能有注释， 另，lothar同样也支持 \_global\_.php文件进行全局数据加载，只是只会加载common模块下的该文件
