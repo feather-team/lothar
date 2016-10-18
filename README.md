@@ -75,67 +75,68 @@ lothar server start
 
 * lothar中访问页面时，url的前缀需要为模块名，比如访问common模块下的 index.html，则正确的访问url为 common/index.html
 
-#### 注：包括js中一些访问的本地数据源做同样的数据，所以lothar不建议直接异步请求本地数据源的原地址，而是采用rewrite.js进行转发，因为rewrite.js中的本地原地址lothar会自动进行模块名的添加，如common模块下的rewrite.js文件：
+    #### 注：包括js中一些访问的本地数据源做同样的数据，所以lothar不建议直接异步请求本地数据源的原地址，而是采用rewrite.js进行转发，因为rewrite.js中的本地原地址lothar会自动进行模块名的添加，如common模块下的rewrite.js文件：
 
-```js
+    ```js
 module.exports = {
     '/ajax/test': '/data/async/test.json' 
 };
-```
+    ```
 
-编译后访问/ajax/test，地址会自动转发至common/data/async/test.json
+    编译后访问/ajax/test，地址会自动转发至common/data/async/test.json
 
 * 在feather2中，因为使用了mustache通用模板引擎，所以采用了.json文件存储页面数据，lothar中则除了 同路径外的.json文件后，也支持.php文件结尾的页面数据文件，比如，模块下有一文件叫 page/a/b.html，则对应的页面数据文件则为 data/page/a/b.php 或 data/page/a/b.json
 
-```php
+    ```php
 <?php
 return array(
     'title' => '123'
 );
-```
+    ```
 
-```js
+    ```js
 {
     "title": "123"
 }
-```
+    ```
 
-页面引用
-```
-<div>{{$title}}</div>
-```
-lothar为了方便开发者本地调试，增了一个额外的变量 __debugData， 可打印出当前页面的所有数据
+    页面引用
+    ```
+    <div>{{$title}}</div>
+    ```
+    
+    lothar为了方便开发者本地调试，增了一个额外的变量 __debugData， 可打印出当前页面的所有数据，也可以使用?debugData的版本自动打印测试数据
 
-```
-<?php var_dump($__debugData);?>
-```
+    ```
+    <?php var_dump($__debugData);?>
+    ```
 
-当然你也可以通过使用blade自带的方法打印，只是结果可能不是你想要的
+    当然你也可以通过使用blade自带的方法打印，只是结果可能不是你想要的
 
-```
-<?php var_dump($__env->getShared());?>
-```
+    ```
+    <?php var_dump($__env->getShared());?>
+    ```
 
-#### 注：标准的json文件，key必须包含双引号，而非单引号，并且，不能有注释， 另，lothar同样也支持 \_global\_.php文件进行全局数据加载，只是只会加载common模块下的该文件
+    #### 注：标准的json文件，key必须包含双引号，而非单引号，并且，不能有注释， 另，lothar同样也支持 \_global\_.php文件进行全局数据加载，只是只会加载common模块下的该文件
 
 * lothar中引用的几个扩展标签的写法需要转成blade的语法，如：
 
-```html
+    ```html
 @extends('./xx')
 @widget('a')
 @pagelet('b#test')
 
 <!--第2个参数支持传递数据，数据只在被引用模块内生效-->
 @widget('a', array('title' => '123')) 
-```
+    ```
 
-#### 注： lothar暂时不支持block标签，请直接使用blade的section标签，具体文档可见[blade](http://www.golaravel.com/laravel/docs/5.1/blade/)
+    #### 注： lothar暂时不支持block标签，请直接使用blade的section标签，具体文档可见[blade](http://www.golaravel.com/laravel/docs/5.1/blade/)
 
 * lothar中跨模块引用时，需要在引用文件的前面加上  模块名: 的格式，如：
 
-main/index.html
+    main/index.html
 
-```html
+    ```html
 @extends('common:layout')
 @widget('common:header')
 
@@ -143,49 +144,49 @@ main/index.html
 <script>
 require.async('common:backbone')
 </script>
-```
+    ```
 
 * 插件机制
 
-lothar对blade进行了扩展，支持插件，具体用法：
+    lothar对blade进行了扩展，支持插件，具体用法：
 
-common/plugins/datetime.php
+    common/plugins/datetime.php
 
-```php
+    ```php
 function blade_plugin_datetime($expression){
     return '<?php echo date("Y-m-d H:i:s");?>';
 }
-```
+    ```
 
-common模块下的 index.html
+    common模块下的 index.html
 
-```php
+    ```php
 现在时间: <div id="datetime">@datetime()</div>
-```
+    ```
 
-以上为lothar中使用的注意要点，具体部署可见[feather2/blade](https://github.com/jsyczhanghao/feather2-blade.git)
+    以上为lothar中使用的注意要点，具体部署可见[feather2/blade](https://github.com/jsyczhanghao/feather2-blade.git)
 
 
 * 自定义标签
 
-lothar支持对blade进行自定义标签的扩展，具体用法：
+    lothar支持对blade进行自定义标签的扩展，具体用法：
 
-conf/conf.js
-```js
+    conf/conf.js
+    ```js
 lothar.config.set('template.tags', {
     raw: ['{!!', '!!}'],
     content: ['{%', '%}'],
     escapedContent: ['{{{', '}}}']
 });
-```
+    ```
 
-index.html
+    index.html
 
-```html
+    ```html
 <div>{%$name%}</div>
-```
+    ```
 
-#### 注：
+### 很重要的注：
 
 lothar虽然不鼓励使用动态域名，但是支持，但，注意，但请使用以下2种语法：
 
@@ -202,14 +203,18 @@ common模块 conf/deploy/xx.js
 module.exports = [
     //...此处N多配置
     {
-        from: "/static",
+        from: "/static",    //静态资源内的所有域名都给干掉
         to: "xxx",
-        include: "**.css",
         replace: {
             //去掉所有css中的出现的domain
             from: "//{{$domain}}",
             to: ""
         }
+    },
+    
+    {
+        from: "/view",  //view内的所有内容不做替换，包括map表
+        to: "xxx"
     }
 ];
 ```
