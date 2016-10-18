@@ -166,6 +166,25 @@ common模块下的 index.html
 以上为lothar中使用的注意要点，具体部署可见[feather2/blade](https://github.com/jsyczhanghao/feather2-blade.git)
 
 
+* 自定义标签
+
+lothar支持对blade进行自定义标签的扩展，具体用法：
+
+conf/conf.js
+```js
+lothar.config.set('template.tags', {
+    raw: ['{!!', '!!}'],
+    content: ['{%', '%}'],
+    escapedContent: ['{{{', '}}}']
+});
+```
+
+index.html
+
+```html
+<div>{%$name%}</div>
+```
+
 #### 注：
 
 lothar虽然不鼓励使用动态域名，但是支持，但，注意，但请使用以下2种语法：
