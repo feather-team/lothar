@@ -78,9 +78,9 @@ lothar server start
     #### 注：包括js中一些访问的本地数据源做同样的数据，所以lothar不建议直接异步请求本地数据源的原地址，而是采用rewrite.js进行转发，因为rewrite.js中的本地原地址lothar会自动进行模块名的添加，如common模块下的rewrite.js文件：
 
     ```js
-module.exports = {
-    '/ajax/test': '/data/async/test.json' 
-};
+    module.exports = {
+        '/ajax/test': '/data/async/test.json' 
+    };
     ```
 
     编译后访问/ajax/test，地址会自动转发至common/data/async/test.json
@@ -88,16 +88,16 @@ module.exports = {
 * 在feather2中，因为使用了mustache通用模板引擎，所以采用了.json文件存储页面数据，lothar中则除了 同路径外的.json文件后，也支持.php文件结尾的页面数据文件，比如，模块下有一文件叫 page/a/b.html，则对应的页面数据文件则为 data/page/a/b.php 或 data/page/a/b.json
 
     ```php
-<?php
-return array(
-    'title' => '123'
-);
+    <?php
+    return array(
+        'title' => '123'
+    );
     ```
 
     ```js
-{
-    "title": "123"
-}
+    {
+        "title": "123"
+    }
     ```
 
     页面引用
@@ -122,12 +122,12 @@ return array(
 * lothar中引用的几个扩展标签的写法需要转成blade的语法，如：
 
     ```html
-@extends('./xx')
-@widget('a')
-@pagelet('b#test')
+    @extends('./xx')
+    @widget('a')
+    @pagelet('b#test')
 
-<!--第2个参数支持传递数据，数据只在被引用模块内生效-->
-@widget('a', array('title' => '123')) 
+    <!--第2个参数支持传递数据，数据只在被引用模块内生效-->
+    @widget('a', array('title' => '123')) 
     ```
 
     #### 注： lothar暂时不支持block标签，请直接使用blade的section标签，具体文档可见[blade](http://www.golaravel.com/laravel/docs/5.1/blade/)
@@ -137,13 +137,13 @@ return array(
     main/index.html
 
     ```html
-@extends('common:layout')
-@widget('common:header')
+    @extends('common:layout')
+    @widget('common:header')
 
-<link href="common:boostrap/css/bootstrap.css" rel="stylesheet" />
-<script>
-require.async('common:backbone')
-</script>
+    <link href="common:boostrap/css/bootstrap.css" rel="stylesheet" />
+    <script>
+    require.async('common:backbone')
+    </script>
     ```
 
 * 插件机制
@@ -153,15 +153,15 @@ require.async('common:backbone')
     common/plugins/datetime.php
 
     ```php
-function blade_plugin_datetime($expression){
-    return '<?php echo date("Y-m-d H:i:s");?>';
-}
+    function blade_plugin_datetime($expression){
+        return '<?php echo date("Y-m-d H:i:s");?>';
+    }
     ```
 
     common模块下的 index.html
 
     ```php
-现在时间: <div id="datetime">@datetime()</div>
+    现在时间: <div id="datetime">@datetime()</div>
     ```
 
     以上为lothar中使用的注意要点，具体部署可见[feather2/blade](https://github.com/jsyczhanghao/feather2-blade.git)
@@ -173,17 +173,17 @@ function blade_plugin_datetime($expression){
 
     conf/conf.js
     ```js
-lothar.config.set('template.tags', {
-    raw: ['{!!', '!!}'],
-    content: ['{%', '%}'],
-    escapedContent: ['{{{', '}}}']
-});
+    lothar.config.set('template.tags', {
+        raw: ['{!!', '!!}'],
+        content: ['{%', '%}'],
+        escapedContent: ['{{{', '}}}']
+    });
     ```
 
     index.html
 
     ```html
-<div>{%$name%}</div>
+    <div>{%$name%}</div>
     ```
 
 ### 很重要的注：
