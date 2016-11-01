@@ -105,7 +105,7 @@ lothar server start
     <div>{{$title}}</div>
     ```
     
-    lothar为了方便开发者本地调试，增了一个额外的变量 __debugData， 可打印出当前页面的所有数据，也可以使用?debugData的版本自动打印测试数据
+    lothar为了方便开发者本地调试，增了一个额外的变量 __debugData， 可打印出当前页面的所有数据，也可以通过浏览器访问http://ip:port/xxx.html?debugData的方式打印测试数据
 
     ```
     <?php var_dump($__debugData);?>
