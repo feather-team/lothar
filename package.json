@@ -1,6 +1,6 @@
 {
   "name": "lothar",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "blade的feather2解决方案",
   "main": "index.js",
   "bin": {
