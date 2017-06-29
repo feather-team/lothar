@@ -46,11 +46,11 @@ lothar init demo #创建项目demo
 3.  利于权限控制
 
 
-####也可通过命令行--module 参数进行模块的创建:
+#### 也可通过命令行--module 参数进行模块的创建:
  
- ```sh
- lothar init demo/news --module #创建demo项目的新闻模块
- ```
+```sh
+lothar init demo/news --module #创建demo项目的新闻模块
+```
 
 ### start
 
